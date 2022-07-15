@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Wails: Production ipfs-desktop23",
+      "type": "go",
+      "request": "launch",
+      "mode": "exec",
+      "program": "${workspaceFolder}/build/bin/ipfs-desktop23",
+      "preLaunchTask": "build",
+      "cwd": "${workspaceFolder}",
+      "env": {}
+    },
+    {
+      "name": "Wails: Debug ipfs-desktop23",
+      "type": "go",
+      "request": "launch",
+      "mode": "exec",
+      "program": "${workspaceFolder}/build/bin/ipfs-desktop23",
+      "preLaunchTask": "build debug",
+      "cwd": "${workspaceFolder}",
+      "env": {}
+    }
+  ]
+}
