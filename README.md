@@ -1,9 +1,13 @@
 # README
 
+
 ## TODO
 
-- [ ] Run kubo (ipfs/kubo) daemon via go during app startup
-   * Maybe use https://github.com/fukaoi/ipfs-tutorial/blob/8b9fe779d8d673ce3e7c21ea96f7272373eaae52/main.go as example?
+- [x] include webui via CID instead of via git submodule
+- [ ] include webui via car file during pre-build hook
+    * Blocked by:
+        - [ ] https://github.com/ipfs/ipfs-webui/pull/1974
+        - [ ] (There are no pre-build hooks with wails](https://github.com/wailsapp/wails/issues/1577)
 
 ## Getting started
 
