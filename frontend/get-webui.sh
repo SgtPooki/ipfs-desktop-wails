@@ -7,7 +7,8 @@
 WEBUI_CID=bafybeibozpulxtpv5nhfa2ue3dcjx23ndh3gwr5vwllk7ptoyfwnfjjr4q #v2.15.1
 
 main() {
-  ipfs get "/ipfs/$WEBUI_CID" -o frontend
+  set -ex
+  ipfs get "/ipfs/$WEBUI_CID" -o .
 }
 
 main

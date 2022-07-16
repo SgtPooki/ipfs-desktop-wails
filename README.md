@@ -18,7 +18,6 @@ See https://wails.io/docs/gettingstarted/installation
 ### Run a local version
 
 ```bash
-./get-webui.sh
 wails dev
 ```
 

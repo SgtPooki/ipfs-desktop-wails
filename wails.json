@@ -1,8 +1,8 @@
 {
   "name": "ipfs-desktop",
-  "frontend:build": "",
+  "frontend:build": "bash ./get-webui.sh",
   "frontend:install": "",
-  "frontend:dev": "",
+  "frontend:dev": "bash ./get-webui.sh",
   "frontend:dev:watcher": "npx --yes serve -u .",
   "frontend:dev:serverUrl": "http://localhost:3000",
   "wailsjsdir": "./frontend",
