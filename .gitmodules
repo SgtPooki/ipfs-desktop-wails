@@ -1,5 +1,0 @@
-[submodule "webui"]
-	path = frontend
-	url = git@github.com:ipfs/ipfs-webui.git
-    branch = main
-    ignore = dirty
