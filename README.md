@@ -18,7 +18,7 @@ See https://wails.io/docs/gettingstarted/installation
 ### Run a local version
 
 ```bash
-git submodule update --init --recursive --remote
+./get-webui.sh
 wails dev
 ```
 
