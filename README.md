@@ -3,6 +3,7 @@
 ## TODO
 
 - [ ] Run kubo (ipfs/kubo) daemon via go during app startup
+   * Maybe use https://github.com/fukaoi/ipfs-tutorial/blob/8b9fe779d8d673ce3e7c21ea96f7272373eaae52/main.go as example?
 
 ## Getting started
 
