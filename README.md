@@ -6,8 +6,6 @@
 
 ## Getting started
 
-Things are currently broken.. wails is not respecting the build/folder at all
-
 ### Install wails
 
 ```bash
@@ -18,18 +16,12 @@ See https://wails.io/docs/gettingstarted/installation
 
 ### Run a local version
 
-#### Terminal 1
 ```bash
 git submodule update --init --recursive --remote
-cd frontend
-npm ci
-npm run start
-```
-
-#### Terminal 2
-```bash
 wails dev
 ```
+
+The first run will take a long time since the ipfs/ipfs-webui package has so many dependencies to install.
 
 ## Building
 
