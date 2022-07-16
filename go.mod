@@ -1,6 +1,6 @@
 module ipfs-desktop
 
-go 1.17
+go 1.18
 
 require github.com/wailsapp/wails/v2 v2.0.0-beta.38
 
