@@ -1,4 +1,4 @@
 [submodule "webui"]
-	path = webui
+	path = frontend/webui
 	url = git@github.com:ipfs/ipfs-webui.git
     tag = v2.17.3
