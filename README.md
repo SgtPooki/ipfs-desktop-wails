@@ -7,7 +7,7 @@
 - [ ] include webui via car file during pre-build hook
     * Blocked by:
         - [ ] https://github.com/ipfs/ipfs-webui/pull/1974
-        - [ ] (There are no pre-build hooks with wails](https://github.com/wailsapp/wails/issues/1577)
+        - [ ] [There are no pre-build hooks with wails](https://github.com/wailsapp/wails/issues/1577)
 
 ## Getting started
 
