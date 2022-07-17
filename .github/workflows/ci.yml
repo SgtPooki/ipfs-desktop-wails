@@ -67,4 +67,4 @@ jobs:
           # Branch to use as the main or master for comparison
           master-branch: 'main'
           # configuration token
-          github-token: ${{ secret.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
