@@ -69,7 +69,7 @@ jobs:
       - name: Fix DNS resolver
         run: |
           # fix resolv - DNS provided by Github is unreliable for DNSLik/dnsaddr
-          sudo sed -i '' -e 's/nameserver 127.0.0.*/nameserver 1.1.1.1/g' /etc/resolv.conf
+          sudo sed -i -e 's/nameserver 127.0.0.*/nameserver 1.1.1.1/g' /etc/resolv.conf
 
       - name: Get Wails
         run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
