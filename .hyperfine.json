@@ -1,3 +1,5 @@
 [
-  { "name": "Test build", "command": "wails build" }
+  { "name": "Build", "command": "wails build" },
+  { "name": "Build (multi-command)", "command": "wails build 2>&1 | grep --line-buffered \"Built\" | while read ; do pgrep wails || exit 0  ; done" },
+  { "name": "Dev build", "command": "wails dev 2>&1 | grep --line-buffered \"Serving DevServer\" | while read ; do kill $(pgrep wails) ; done" }
 ]
