@@ -1,0 +1,70 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # see
+  package:
+    strategy:
+      matrix:
+        platform: [ windows-latest, macos-latest ]
+        go-version: [1.18]
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go-version }}
+
+  benchmark:
+    # TODO: Add `wails dev` benchmark.. since it's a "waiting" process, we need to do something like:
+    #   `wails dev 2>&1 | grep --line-buffered 'Serving DevServer' | while read ; do kill $(pgrep wails) ; done`
+    runs-on: ubuntu-latest
+
+    steps:
+      # check out source
+      - uses: actions/checkout@v3
+
+      # Set up ipfs binary required by ./frontend/get-webui.sh
+      # see https://github.com/ipfs/ipfs-webui/blob/95a76714d454e13b740387079da1c8dd3b2d1617/.github/workflows/ci.yml#L62
+      - uses: ipfs/download-ipfs-distribution-action@v1
+        with:
+          name: go-ipfs
+      # - uses: ipfs/download-ipfs-distribution-action@v1
+      #   with:
+      #     name: ipfs-cluster-ctl
+      - name: Fix DNS resolver
+        run: |
+          # fix resolv - DNS provided by Github is unreliable for DNSLik/dnsaddr
+          sudo sed -i -e 's/nameserver 127.0.0.*/nameserver 1.1.1.1/g' /etc/resolv.conf
+
+      # - uses: ipfs/start-ipfs-daemon-action@v1
+      - uses: blacha/hyperfine-action@d87b7c1103f8987f94a4751e4011d4ecc74e355f
+        with:
+          # Configuration file to use
+          benchmark-config: '.hyperfine.json'
+          # Number of benchmarks to keep
+          count: 100
+          # Branch to use for benchmarks output/benchmark.json
+          benchmark-branch: 'gh-pages'
+          # Where to store the output of the benchmarks
+          benchmark-output: 'benchmarks.json'
+          # benchmark html file to view the benchmarks
+          benchmark-html: 'benchmarks.html'
+          # Branch to use as the main or master for comparison
+          master-branch: 'main'
+          # configuration token
+          github-token: ${{ secret.GITHUB_TOKEN }}
