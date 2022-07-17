@@ -38,10 +38,10 @@ jobs:
       # - uses: ipfs/download-ipfs-distribution-action@v1
       #   with:
       #     name: ipfs-cluster-ctl
-      # - name: Fix DNS resolver
-      #   run: |
-      #     # fix resolv - DNS provided by Github is unreliable for DNSLik/dnsaddr
-      #     sudo sed -i -e 's/nameserver 127.0.0.*/nameserver 1.1.1.1/g' /etc/resolv.conf
+      - name: Fix DNS resolver
+        run: |
+          # fix resolv - DNS provided by Github is unreliable for DNSLik/dnsaddr
+          sudo sed -i '' -e 's/nameserver 127.0.0.*/nameserver 1.1.1.1/g' /etc/resolv.conf
       - name: Get Wails
         run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
       - name: Attempt to build
@@ -66,10 +66,10 @@ jobs:
       # - uses: ipfs/download-ipfs-distribution-action@v1
       #   with:
       #     name: ipfs-cluster-ctl
-      # - name: Fix DNS resolver
-      #   run: |
-      #     # fix resolv - DNS provided by Github is unreliable for DNSLik/dnsaddr
-      #     sudo sed -i -e 's/nameserver 127.0.0.*/nameserver 1.1.1.1/g' /etc/resolv.conf
+      - name: Fix DNS resolver
+        run: |
+          # fix resolv - DNS provided by Github is unreliable for DNSLik/dnsaddr
+          sudo sed -i '' -e 's/nameserver 127.0.0.*/nameserver 1.1.1.1/g' /etc/resolv.conf
 
       - name: Get Wails
         run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
