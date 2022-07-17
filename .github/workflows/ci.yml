@@ -28,10 +28,26 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: ${{ matrix.go-version }}
+      # Set up ipfs binary required by ./frontend/get-webui.sh
+      # see https://github.com/ipfs/ipfs-webui/blob/95a76714d454e13b740387079da1c8dd3b2d1617/.github/workflows/ci.yml#L62
+      - uses: ipfs/download-ipfs-distribution-action@v1
+        with:
+          name: go-ipfs
+      # - uses: ipfs/download-ipfs-distribution-action@v1
+      #   with:
+      #     name: ipfs-cluster-ctl
+      - name: Fix DNS resolver
+        run: |
+          # fix resolv - DNS provided by Github is unreliable for DNSLik/dnsaddr
+          sudo sed -i -e 's/nameserver 127.0.0.*/nameserver 1.1.1.1/g' /etc/resolv.conf
+      - name: Get Wails
+        run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
+      - name: Attempt to build
+        run: |
+          wails build
 
   benchmark:
-    # TODO: Add `wails dev` benchmark.. since it's a "waiting" process, we need to do something like:
-    #   `wails dev 2>&1 | grep --line-buffered 'Serving DevServer' | while read ; do kill $(pgrep wails) ; done`
+    needs: [package]
     runs-on: ubuntu-latest
 
     steps:
@@ -50,6 +66,8 @@ jobs:
         run: |
           # fix resolv - DNS provided by Github is unreliable for DNSLik/dnsaddr
           sudo sed -i -e 's/nameserver 127.0.0.*/nameserver 1.1.1.1/g' /etc/resolv.conf
+      - name: Get Wails
+        run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
 
       # - uses: ipfs/start-ipfs-daemon-action@v1
       - uses: blacha/hyperfine-action@d87b7c1103f8987f94a4751e4011d4ecc74e355f
