@@ -49,7 +49,7 @@ jobs:
           wails build
 
   benchmark:
-    needs: [package]
+    # needs: [package]
     runs-on: ubuntu-latest
 
     steps:
