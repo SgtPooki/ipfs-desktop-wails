@@ -11,10 +11,12 @@
 
 ## Getting started
 
-### Install wails
+### Install dependencies
 
 ```bash
-go install github.com/wailsapp/wails/v2/cmd/wails@latest
+go install github.com/wailsapp/wails/v2/cmd/wails@latest # wails
+go install github.com/filecoin-project/lassie/cmd/lassie@latest # lassie for downloading webui
+go install github.com/ipld/go-car/cmd/car@latest # for extracting contents of car file downloaded from lassie
 ```
 
 See https://wails.io/docs/gettingstarted/installation
